@@ -311,13 +311,13 @@ public class CheckoutController {
 	    		shippingCost = computeShippingCost(purchase);
 	    		BigDecimal orderTotal = subTotal.add(shippingCost);
 
-	    		// ctx.setVariable("subTotal", subTotal);
-	    		// ctx.setVariable("shippingCost", shippingCost);
-	    		// ctx.setVariable("orderTotal", orderTotal);
+	    		ctx.setVariable("subTotal", subTotal);
+	    		ctx.setVariable("shippingCost", shippingCost);
+	    		ctx.setVariable("orderTotal", orderTotal);
 	    		
 	    		ctx.setVariable("orderNumber", purchase.getOrderNumber());
 	    		ctx.setVariable("shippingAddress", purchase.getShippingAddress());
-	    		// ctx.setVariable("billingAddress", purchase.getBillingAddress());
+	    		ctx.setVariable("billingAddress", purchase.getBillingAddress());
 
                         int creditCardLength = purchase.getCreditCardNumber().length();
 

@@ -288,7 +288,7 @@ public class CheckoutControllerTest {
 		when(sCart.getPurchase()).thenReturn(purchase);
 
 		CouponCode coupon = new CouponCode();
-		coupon.setCode("abcd");
+		coupon.setCode("abcdefg");
 		when(sCart.getCouponCode()).thenReturn(coupon);
 
 		when(purchaseService.save(purchase)).thenReturn(purchase);

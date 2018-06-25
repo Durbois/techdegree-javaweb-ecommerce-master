@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:fragment="head(page_title)" lang="en">
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Condensed:400,700' rel='stylesheet' type='text/css'/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="/js/site.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css" th:href="@{/css/normalize.css}"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/site.css" th:href="@{/css/site.css}"/>
+
+    <title th:text="${page_title}">CartShop</title>
+</head>
+
+<body>
+
+<header th:fragment="header">
+    <a class="logo" th:href="@{/product/}">CartShop</a>
+    <nav>
+        <ul>
+            <li><a th:href="@{/about}">About</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a name="cartButton" class="button icon-right" th:href="@{/cart}"><span>View Cart</span> <span id="header_formatted_subtotal" th:if="(${subtotalFormatted} != '') and (${subtotalFormatted} != null)" th:text=" '('+ ${subtotalFormatted} +')' "></span> <i class="material-icons">shopping_cart</i></a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<div th:fragment="flash" th:if="${flash != null}" class="container">
+    <div th:classappend="${#strings.toLowerCase(flash.status)}" th:text="${flash.message}" class="flash"> </div>
+
+</div>
+
+<div th:fragment="scripts">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="/js/site.js"></script>
+</div>
+
+
+<div th:fragment="head_orderConfirm(page_title)" lang="en">
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta http-equiv="refresh" content="3; url=/checkout/email"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Condensed:400,700' rel='stylesheet' type='text/css'/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css" th:href="@{/css/normalize.css}"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/site.css" th:href="@{/css/site.css}"/>
+
+    <title th:text="${page_title}">CartShop</title>
+</div>
+
+</body>
+</html>

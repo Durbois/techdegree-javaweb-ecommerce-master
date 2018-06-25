@@ -46,5 +46,5 @@ dependencies {
 bootRun {
     // Update path to the directory that contains your
     // eCommerce.properties file
-	jvmArgs = ["-Dproperties.home=C:/Users/Win10 Pro x64/Documents/Code/techdegree-javaweb-ecommerce-master/src/main/resources"]
+	jvmArgs = ["-Dproperties.home=src/main/resources"]
 }

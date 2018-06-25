@@ -1,35 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-        <title>CartShop</title>
-        <link href='https://fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Condensed:400,700' rel='stylesheet' type='text/css'/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-        <script src="/js/site.js"></script>
-        <link rel="stylesheet" type="text/css" href="/static/css/normalize.css" th:href="@{/css/normalize.css}"/>
-        <link rel="stylesheet" type="text/css" href="/static/css/site.css" th:href="@{/css/site.css}"/>
-    </head>
-    <body>
-        <header>
-            <a class="logo" href="/product/">CartShop</a>
-            <nav>
-                <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a class="button icon-right" href="/cart">View Cart
-                        <span id="header_formatted_subtotal" th:if="(${subtotalFormatted} != '')
-                    and (${subtotalFormatted} != null)" th:text=" '('+ ${subtotalFormatted} +')' "></span>
-                        <i class="material-icons">shopping_cart</i></a></li>
-                </ul>
-            </nav>
-        </header>
-        <section class="checkout">
-            <div th:fragment="flash" th:if="${flash != null}" class="container">
-                <div th:classappend="${#strings.toLowerCase(flash.status)}" th:text="${flash.message}" class="flash"></div>
-            </div>
-            <h1><span>Checkout&nbsp;&nbsp;>&nbsp;&nbsp;</span>Verify Items</h1>
+<html>
+<head th:replace="layout :: head('Cart Shop')" xmlns:th="http://www.w3.org/1999/xhtml"></head>
+<body>
+<header th:replace="layout :: header"></header>
+<section class="cart">
+    <div th:replace="layout :: flash"> </div>
+    <h1><span>Checkout&nbsp;&nbsp;>&nbsp;&nbsp;</span>Verify Items</h1>
             <div th:each="productPurchase,iterStat : ${purchase.productPurchases}" class="cart-item">
 	            <div class="item">
 	                <a th:href="@{/detail/{productId}(productId=${productPurchase.product.id})}"><img class="img-thumb" th:src="@{/product/{productId}/image(productId=${productPurchase.product.id})}"/></a>
@@ -42,8 +18,8 @@
                 <form id="couponForm" action="#" th:action="@{/checkout/coupon}" th:object="${couponCode}" method="post">
                    <div th:classappend="${#fields.hasErrors('code')} ? 'error' : ''">
                     <input type="text" th:field="*{code}" placeholder="Enter coupon code" th:errorclass="error" />
-                   <!--<p class="error-message" th:if="${#fields.hasErrors('code')}"
-                   th:errors="*{code}">This field is required</p>-->
+                   <p class="error-message" th:if="${#fields.hasErrors('code')}"
+                   th:errors="*{code}">This field is required</p>
                    </div>
                 </form>
             </div>

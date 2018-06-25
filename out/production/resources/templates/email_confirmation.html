@@ -72,10 +72,10 @@
                     <div class="summary-info">
                         <h3>Billing Info:</h3>
                         <span th:text="|Credit Card ${creditCard}|">Credit Card XXXX</span>
-                    </div>
+                    </div>-->
                 </div>
-                <div class="mini-cart">-->
-                    <!--<h3>Order Summary</h3>
+                <div class="mini-cart">
+                    <h3>Order Summary</h3>
 	                <table cellpadding="5" cellspacing="5">
 	                	<tr>
 	                		<th>Product</th>
@@ -88,23 +88,23 @@
 			                <td th:text="${productPurchase.quantity}">1</td>
 			            </tr>
 		            </table>
-		            <br />-->
-                    <!--<table cellpadding="5" cellspacing="5">
-                    	<tr>
-                        	<td>Subtotal:</td>
-                        	<td><strong><span th:text="${'$' + #numbers.formatDecimal(subTotal, 1, 2, 'POINT')}">$199.00</span></strong></td>
+		            <br />
+                    <table cellpadding="5" cellspacing="5">
+                        <tr>
+                            <td>Subtotal:</td>
+                            <td><strong><span th:text="${'$' + #numbers.formatDecimal(subTotal, 1, 2, 'POINT')}">$199.00</span></strong></td>
                         </tr>
                         <tr>
-                        	<td>Shipping:</td>
-                        	<td><strong><span th:text="${'$' + #numbers.formatDecimal(shippingCost, 1, 2, 'POINT')}">$199.00</span></strong></td>
+                               <td>Shipping:</td>
+                               <td><strong><span th:text="${'$' + #numbers.formatDecimal(shippingCost, 1, 2, 'POINT')}">$199.00</span></strong></td>
                         </tr>
                         <tr />
-                        <tr>
-                        	<td>Total:</td>
-                        	<td><strong><span th:text="${'$' + #numbers.formatDecimal(orderTotal, 1, 2, 'POINT')}">$199.00</span></strong></td>
-                        </tr>
-                        <tr />
-                    </table>-->
+                          <tr>
+                             <td>Total:</td>
+                             <td><strong><span th:text="${'$' + #numbers.formatDecimal(orderTotal, 1, 2, 'POINT')}">$199.00</span></strong></td>
+                          </tr>
+                          <tr />
+                       </table>
                 </div>
             </div>
         </section>

@@ -273,18 +273,21 @@ public class CheckoutController {
     		model.addAttribute("shippingAddress", purchase.getShippingAddress());
     		model.addAttribute("billingAddress", purchase.getBillingAddress());
 
-    		int creditCardLength = purchase.getCreditCardNumber().length();
+    		if (purchase.getCreditCardNumber() != null) {
+			int creditCardLength = purchase.getCreditCardNumber().length();
 
-    		String allButLast4Digits = "";
+			String allButLast4Digits = "";
 
-    		for (int i = 0; i < (creditCardLength - 4); i++) {
-    		  allButLast4Digits = allButLast4Digits + "*";
-                }
+			for (int i = 0; i < (creditCardLength - 4); i++) {
+				allButLast4Digits = allButLast4Digits + "*";
+			}
 
-    		String maskCreditCard = allButLast4Digits +  purchase.getCreditCardNumber()
-                    .substring(creditCardLength - 4);
+			String maskCreditCard = allButLast4Digits +  purchase.getCreditCardNumber()
+					.substring(creditCardLength - 4);
 
-    		model.addAttribute("creditCard", maskCreditCard);
+			model.addAttribute("creditCard", maskCreditCard);
+		}
+
     	} else {
     		logger.error("No purchases Found!");
     		return("redirect:/error");
